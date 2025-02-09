@@ -46,7 +46,6 @@ To run this project locally, follow these steps:
 1. Clone this repository:
    ```bash
    git clone https://github.com/your-username/HealthCare-Hub.git
-   cd HealthCare-Hub
    ```
 2. Run the Streamlit app:
    ```bash
