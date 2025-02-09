@@ -11,6 +11,7 @@ HealthCare-Hub includes the following predictive models:
 1. **Bone Fracture Detection**
    - Uses image-based machine learning to detect fractures in X-ray images.
    - Repository: [Bone Fracture Detection](https://github.com/21lakshh/Bone-Fracture-Detection)
+   - Download The Model File For this Seperately: [Bone Fracture Model](https://drive.google.com/file/d/1uqPeQpNo0OomZs_Y_cRIdj-_QJuikfbD/view?usp=sharing)
 
 2. **Asthma Prediction**
    - Predicts the likelihood of asthma based on patient data.
@@ -35,6 +36,27 @@ HealthCare-Hub includes the following predictive models:
 7. **Medical Insurance Prediction**
    - Estimates the cost of medical insurance based on individual details.
    - Repository: [Medical Insurance Prediction](https://github.com/21lakshh/Medical-Insurance-Prediction)
+
+---
+
+# Installation
+
+To run this project locally, follow these steps:
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/HealthCare-Hub.git
+   cd HealthCare-Hub
+   ```
+2. Run the Streamlit app:
+   ```bash
+   streamlit run app.py
+   ```
+
+3. Open your browser and navigate to:
+   ```
+   http://localhost:8501
+   ```
 
 ---
 
