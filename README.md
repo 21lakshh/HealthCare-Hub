@@ -65,7 +65,3 @@ To run this project locally, follow these steps:
 - Select the desired model from the sidebar and input the required data to get predictions.
 
 ---
-
-## Contributing
-
-Contributions are welcome! If you have suggestions or improvements, please create an issue or submit a pull request.
