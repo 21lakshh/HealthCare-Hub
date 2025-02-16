@@ -7,19 +7,11 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
 import numpy as np
 from PIL import Image
-
-def make_prediction(input_data):
-    input_data_as_numpy_array = np.asarray(input_data, dtype=float)
-    input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
-    std_data = diabetes_scalar.transform(input_data_reshaped)
-    prediction = diabetes_model.predict(std_data)
-
-    if prediction[0] == 1:
-        return 'Person is Diabetic!'
-    else:
-        return 'Person is not Diabetic!'
-
-# loading all the saved models 
+from functions import make_prediction_for_brain_tumor_detection
+from functions import preprocess_image_for_brain_tumor_detection
+from functions import load_and_preprocess_image
+from functions import make_prediction
+import cv2
 
 # loading the bone fracture model
 working_dir = os.path.dirname(os.path.abspath(__file__)) 
@@ -48,19 +40,15 @@ model_path = f'{working_dir}/breastcancer_model.h5'
 breastcancer_model = tf.keras.models.load_model(model_path)
 
 
-def load_and_preprocess_image(image_path):
-    img = Image.open(image_path).convert("L")
-    img = img.resize((224, 224))
-    img_array = np.array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array = img_array.astype('float32') / 255.0
-    return img_array
+brain_tumor_model_path = f'{working_dir}/braintumour_detection.h5'
+brain_tumor_model = tf.keras.models.load_model(brain_tumor_model_path)
 
 # sidebar for navigation 
 with st.sidebar:
     selected = option_menu('Dashboard',
                            
                            ['Bone Fracture X-ray Scan',
+                            'Brain Tumor Detection 🧠',  # Added brain emoji
                             'Breast Cancer Prediction',
                             'Asthma Prediction',
                             'Heart Disease Prediction',
@@ -68,8 +56,10 @@ with st.sidebar:
                             'Calories Burn Prediction',
                             'Medical Insurance'],
 
-                            icons= ['shield','person-standing-dress','lungs','heart-pulse','activity','fire','hospital'],
-                            default_index=0) # defult startup where we want to 
+                            icons=['shield', 'person-circle', 'person-standing-dress', 'lungs',
+                                   'heart-pulse', 'activity', 'fire', 'hospital'],
+                            default_index=0)  
+ 
 if selected == 'Bone Fracture X-ray Scan':
     st.title('X-Ray Scan For Bone Fracture Detection for upper extremities:')
 
@@ -93,6 +83,27 @@ if selected == 'Bone Fracture X-ray Scan':
                     st.success('Not Fractured')
                 else:
                     st.success('Fractured')
+
+if selected == 'Brain Tumor Detection 🧠':
+    st.title('MRI Scan for Brain Tumor Detection 🧠:')
+
+    uploaded_file_brain = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
+
+
+    if uploaded_file_brain is not None:
+        image = Image.open(uploaded_file_brain)
+        col1, col2 = st.columns(2)
+
+        with col1:
+            resized_img = image.resize((150, 150))
+            st.image(resized_img)
+        
+        if col2.button("Analyze Image"):
+            with st.spinner("Analyzing..."):
+                processed_image = preprocess_image_for_brain_tumor_detection(uploaded_file_brain)
+                prediction = make_prediction_for_brain_tumor_detection(processed_image)
+                st.session_state.prediction = prediction
+                st.success(f"Prediction: {prediction}")  # Display result
 
 
 if selected == 'Breast Cancer Prediction':
