@@ -54,7 +54,7 @@ To run this project locally, follow these steps:
    ```
 2. Run the Streamlit app:
    ```bash
-   streamlit run app.py
+   streamlit run dashboard.py
    ```
 
 3. Open your browser and navigate to:
