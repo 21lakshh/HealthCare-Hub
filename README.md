@@ -43,6 +43,8 @@ HealthCare-Hub includes the following predictive models:
    - Repository: [Medical Insurance Prediction](https://github.com/21lakshh/Medical-Insurance-Prediction)
 
 ---
+![example1](images/image1.png)
+![example2](images/image2.png)
 
 # Installation
 
