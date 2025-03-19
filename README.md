@@ -42,6 +42,9 @@ HealthCare-Hub includes the following predictive models:
    - Estimates the cost of medical insurance based on individual details.
    - Repository: [Medical Insurance Prediction](https://github.com/21lakshh/Medical-Insurance-Prediction)
 
+9. **Mental Health Support Chatbot**
+   - AI-powered assistant designed to provide guidance and support for mental health-related concerns.
+   - Repository: [Mental Health Support Chatbot](https://github.com/21lakshh/Mental-Health-Support-Chatbot)
 ---
 ![example1](images/image1.png)
 ![example2](images/image2.png)
